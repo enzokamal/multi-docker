@@ -14,3 +14,11 @@ after_sucess:
   - docker build -t multi-server ./server
   - docker build -t multi-worker ./worker
 
+# docker login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# push images to the dockerhub
+  - docker push multi-client
+  - docker push multi-nginx
+  - docker push multi-server
+  - docker push multi-worker
+
